@@ -19,7 +19,7 @@ public class DemoMobile {
         URLConnection conn = url.openConnection();
         InputStream is = conn.getInputStream();
         BufferedReader br = new BufferedReader(
-                new InputStreamReader(is));
+                new InputStreamReader(is, "gb2312"));
         //创建规则
         Pattern p1 = Pattern.compile("title=\"1\\d{10}\"");
         Pattern p2 = Pattern.compile("<span class=\"s4\">￥\\d+</span>");
@@ -46,7 +46,7 @@ public class DemoMobile {
                     System.out.println(phone + "==>" + price);
                 }
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
 
         }

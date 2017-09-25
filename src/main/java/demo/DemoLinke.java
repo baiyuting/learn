@@ -23,21 +23,21 @@ public class DemoLinke {
 		BufferedReader br = new BufferedReader(
 				new InputStreamReader(is, "UTF-8"));
 		String line = null;
-		//�����ӹ���
+		//超链接规则
 		Pattern p1 = Pattern.compile("<a .* href=.*</a>");
-		//��Ч�ĳ����ӵĹ���
+		//有效的超链接的规则
 		Pattern p2 = Pattern.compile("http://.*\"");
 		while((line=br.readLine())!=null) {
-			//���ҵ����еĳ�����
+			//先找到所有的超链接
 			Matcher m1 = p1.matcher(line);
 			while(m1.find()) {
 				String link = m1.group();
-				//�ҵ���Ч�ĳ�����
+				//找到有效的超链接
 				Matcher m2 = p2.matcher(link);
 				if(m2.find()) {
 					link = m2.group();
 					link = link.substring(0, link.indexOf("\""));
-					//����Ч�ĳ����ӷ��뵽������ȥ
+					//将有效的超链接放入到集合中去
 					allUrl.add(link);
 				}
 			}
